@@ -1,0 +1,118 @@
+Console.WriteLine("Välkommen till inloggningsprogrammet.\n Här kan du välja att skapa en ny användare eller logga in.");
+
+string[] användarNamnArray = new string[100];
+string[] lösenordArray = new string[100];
+
+string befintligtAnvändarNamn;
+string befintligtLösenord;
+
+int användareAntal = 0;
+
+int val = 0;
+
+while (true)
+{
+    Console.WriteLine("------------------------------------------------------");
+    Console.WriteLine("Skriv in ett nummer 1-3 från menyn som du vill utföra.");
+    Console.WriteLine("\n 1. Skapa nytt konto \n 2. Logga in \n 3. Avsluta programmet...");
+    Console.WriteLine();
+
+    
+    val = int.Parse(Console.ReadLine());
+    
+    switch (val)
+    {
+        case 1:
+            if (användareAntal > användarNamnArray.Length - 1)
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.WriteLine("Det går inte att skriva in fler användare då du registrerat max antal användare. ");
+                Console.ResetColor();
+            }
+
+            else
+            {
+                Console.WriteLine("Du vill skapa ett nytt konto. \n Ange ett användarnamn: ");
+                användarNamnArray[användareAntal] = Console.ReadLine();
+
+                Console.WriteLine("Ange ett lösenord: ");
+                lösenordArray[användareAntal] = Console.ReadLine();
+
+                användareAntal++;
+                Console.WriteLine();
+                Console.WriteLine("Du har nu skapat ett nytt konto! Gå tillbaka till menyn för att logga in.");
+                Console.WriteLine();
+
+                for (int i = 0; i <= användareAntal - 1; i++)
+                    Console.WriteLine($"Registrerade användarnamn: {användarNamnArray[i]}");
+            }
+            continue;
+
+
+
+        case 2:
+            Console.WriteLine("Du vill logga in. \n Ange ditt användarnamn: ");
+            befintligtAnvändarNamn = Console.ReadLine();
+
+            Console.WriteLine("Ange lösenord: ");
+            befintligtLösenord = Console.ReadLine();
+
+            bool inloggSuccses = false;
+
+            for (int i = 0; i < användareAntal; i++)
+            {
+                if (befintligtAnvändarNamn == användarNamnArray[i] && befintligtLösenord == lösenordArray[i])
+                {
+                    inloggSuccses = true;
+                    break;
+                }
+            }
+
+            if (inloggSuccses)
+            {
+                Console.WriteLine();
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("Inloggning lyckades! Du är nu inloggad."); Console.ResetColor();
+                break;
+            }
+
+            else
+            {
+                Console.WriteLine();
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.WriteLine("Felaktigt användarnamn eller lösenord. Försök igen."); Console.ResetColor();
+                continue;
+            }
+            
+
+
+        case 3:
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Avslutar programmet... dina uppgifter sparas inte enligt lagen om GDPR."); Console.ResetColor();
+            return;
+
+        default:
+            
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.WriteLine("Ogiltig inmatning, försök igen!"); Console.ResetColor();
+            continue;      
+    }
+
+    Console.WriteLine("För att logga ut igen tryck Q");
+
+    string utloggningsKommando = (Console.ReadLine().ToLower());
+
+    if (utloggningsKommando == "q")
+    {
+        Console.WriteLine("Du loggas ut... Programmet avslutas");
+    }
+    
+    else
+    {
+        Console.WriteLine("Du är inloggad i 10 sekunder innan du loggas ut automatiskt.");
+        Thread.Sleep(10000);
+        Console.WriteLine("Automatiskt utloggning genomförd...");
+    }
+}
+
