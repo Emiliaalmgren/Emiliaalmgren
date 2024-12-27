@@ -1,0 +1,55 @@
+
+Loggbok för memoryspel
+23 December
+Jag börjar med att läsa uppgiften ordentligt för att förstå vad det är jag ska göra. Jag laddar ner zip-filen från 
+github och öppnar upp projektet i Visual Studio Code, där lägger jag till en javascript-fil som jag döper till ”script.js” 
+och sedan går jag längst ner i html filen och inom <body> (längst ner) länkar jag till scriptfilen. Därefter provar 
+jag att lägga till ett id i html filen vid ”time” diven och sedan ett script kommando för att kunna testa om allt 
+är länkat och fungerar. Nu är projektet igång och jag tänker att jag får fortsätta efter julafton. 
+
+25 December
+Idag är planen att jag ska försöka få till att bilderna vänder på sig när man klickar på dem. Jag går till html filen
+och läser koden och tänker att jag ska ändra ”display=none” på alla ”spelar-bilder” så att frågeteckenbilden är synlig
+för alla kort till att börja med, detta ändrar jag alltså endast i html filerna mellan att kopiera och flytta 
+”display=none” attributet mellan ”view front-card” och ”view back-card”, jag kontrollerar hela tiden i 
+liveuppdateringen på webbsidan så jag ser vad som händer. Det blir en snyggare start på programmet om alla kort 
+är bakvända när man börjar spelet. Nu måste jag planera hur jag ska göra för att bilderna ska bli selected på ett 
+bra sätt, jag tänker att jag skulle vilja använda class = cards för att enklare kunna selecta ett specifikt kort
+med mindre kod. Jag bestämmer mig för att använda GetElementByClass och på så sätt inte behöva lägga till unika 
+ID på varje element. Jag testar att klicka på korten efter att ha initierat klassen ”card” men det händer ingenting
+på kortet, jag googlar på hur man kommer åt ett element i en klass och får fram att man måste loopa genom klassen
+för att ett specifikt element i klassen ska bli selected. Jag lägger in en foor-loop där [i] går igenom hela 
+card-klassen och på så sätt får träff på det kortet som man klickar på, i for-loopen lägger jag till funktionen som 
+gör att när man klickar på ett kort så ska nästa funktion som heter ”turnCardAround” anropas och köras. Jag får det 
+att fungera att korten i klassen blir klickad på, men det får räcka för idag. Imorgon ska jag jobba på funktionen att 
+kortet ska vända sig fram och tillbaka.
+
+26 December
+Idag ska jag få korten att vända på sig och jag tänker att enklast är att använda klassen som redan finns på varje kort
+som heter view front-view och view back-view, jag vet inte riktigt hur jag ska komma åt klassen så jag googlar och får
+fram att man kan använda this.querySelector för att komma åt ett specifikt element i klassen som ger träff på den första 
+matchningen som den hittar i koden. Jag initierar denna selektor inuti funktionen (turnCardAround) och på så sätt så har 
+jag skapat en variebel som matchar attributet front-view eller back-view. På detta sätt blir det enkelt att ta reda på 
+vilken utav bilderna som visas och kunna göra en if-sats som gör tvärtemot vad som är för stunden för att vända på bilden.
+Jag går över till timer-delen och börjar fundera på hur jag ska få det till en dropdown meny med dem olika tidsangivelserna,
+jag går tillbaka till lektionen där du visar dropdown menyer den 20/12 och egentligen följer det du visar men lägger in 
+passande values/attribute som får det att visas så som passar detta projekt. Jag lägger till en <select></select> med ett
+id=sec för att det ska finnas en dropdown. Jag får till att det blir en dropdown-meny med rätt objekt(olika sekunderintervall) 
+men inte att sekunderna ändras eller räknas ned, jag ger tillslut upp och tänker att jag i alla fall fått till dropdown menyn.
+Jag inser ju senare att du nämner att man egentligen bara kunde gå in och ändra i Html till <select> med options för att få en
+fungerande dropdown men eftersom jag lagt ned så mycket tid och energi att få till det på andra sättet så låter jag det vara som 
+det är, kanske har jag lärt mig nånting utav det som kan vara till användning i framtiden.
+
+27 December
+Idag kollar jag på lektionen och får tips på att lägga bilden som ska visas som ”flex” istället för block vilket centrerar bilden
+ och får det att se lite snyggare ut vilket jag ändrar i html koden och i funktionen ”turnCardAround”. Jag testar alltid direkt 
+ för att se om jag får önskat resultat. Jag ändrar även så att varje div har attributet style = ”display: none/flex” vilket jag 
+ inte hade innan och därför inte fick önskat resultat när jag försökte vända tillbaka bilden efter att ha vänt på den första gången, 
+ så nu fungerar det fullt ut för att kunna vända på bilden hur många gånger man vill. 
+Jag lägger även till funktionen ”fromBeginning” som är kopplad till Id=restart (starta om knappen) och gör på liknande sätt som i 
+”turnCardAround” funktionen där jag säger att när denna knappen trycks på så ska alla bilder med front-view ha style.display=”flex” 
+och dem med back-view ska ha display=”none” för att återställa korten som dem var från början.
+Nu känner jag att jag inte kommer längre och trots att koden är lite rörig och inte fungerar i sin helhet som ett spel så tycker 
+jag ändå att jag lärt mig mycket och jag får nöja mig med det. Det som nu fungerar i koden är att kunna välja på olika sekunder i 
+en dropdown meny, man kan vända på korten genom att klicka på dem och när man trycker på ”starta om” knappen så vänds att korten 
+tillbaka som dem var från början. 
