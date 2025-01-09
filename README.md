@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @Emiliaalmgren
-- 👀 I’m interested in learning HTML and CSS and I have an eye for design
+- 👀 I’m interested in learning HTML and CSS, javascript, programming in C# and I have an eye for design
 - 🌱 I’m currently studying webdeveloper at Tuc schools in Sweden
 - 💞️ I’m looking for a lia-practice in april 2025
 - 📫 Send me an email to emiliaalmgren@hotmail.com if you are intrested to come in contact with me
